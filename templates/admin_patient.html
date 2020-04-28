@@ -1,0 +1,120 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+{% endblock %}
+
+{% block navbar %}
+ <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Hospital Management System</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="{{ url_for('doctor_index') }}">Dashboard</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="{{ url_for('index') }}">Sign Out</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+<div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li ><a href="#"> <span class="sr-only">(current)</span></a></li>
+            <hr>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li ><a href="{{ url_for('admin_doctor') }}">Doctor <span class="sr-only">(current)</span></a></li>
+            <li><a href="{{ url_for('admin_patient') }}">Patient</a></li>
+            <li><a href="{{ url_for('admin_nurse') }}">Nurse</a></li>
+            <li><a href="{{ url_for('admin_pharmacist') }}">Pharmacist</a></li>
+            <li><a href="{{ url_for('admin_laboratorist') }}">Laboratorist</a></li>
+          </ul>
+          
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h2 class="page-header">Welcome Admin</h2>
+
+          
+
+          <h2 class="sub-header">Add Patient</h2>
+          
+        </div>
+      </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+ <form class="form-horizontal" method="POST" action="/admin_patient"  role="form" >
+    <div class="form-group">
+    <label for="pid" class="col-sm-2 control-label">Patient ID</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="pid" placeholder="Patient ID"name="pid" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="passw" class="col-sm-2 control-label">Password</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="passw" placeholder="Password"name="passw" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="pname" class="col-sm-2 control-label">Patient name</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="pname" placeholder="Patient name" name='pname' required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="add" class="col-sm-2 control-label">Address</label>
+    <div class="col-sm-6">
+      <textarea class="form-control" rows="5" id="add" name="add" placeholder="Address"></textarea>
+    </div>
+  </div>
+  
+  </div>
+  <div class="form-group">
+    <label for="ph" class="col-sm-2 control-label">Phone</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="ph" placeholder="Phone" name='ph' required>
+    </div>
+  </div>
+
+<div class="form-group">
+    <label for="em" class="col-sm-2 control-label">Email</label>
+    <div class="col-sm-6">
+     <input type="email" class="form-control" id="em" placeholder="Email" name='em' required>
+    </div>
+  </div>
+<div class="form-group">
+    <label for="dob" class="col-sm-2 control-label">Date of Birth</label>
+    <div class="col-sm-6">
+     <input type="date" class="form-control" id="dob" placeholder="Date of Birth" name='dob' required>
+    </div>
+  </div>
+  
+  
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <input type="submit" class="btn btn-default" value="Submit"/>
+      
+    </div>
+  </div>
+</form> 
+{% endblock %}
